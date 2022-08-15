@@ -166,4 +166,21 @@ router.delete("/user/:id", async (req, res) => {
   }
 });
 
+router.get("/user-raw", async (req, res) => {
+  try {
+    const response = await sequelize.query("SELECT * FROM users", {
+      type: sequelize.QueryTypes.SELECT,
+    });
+    res.status(200).send({
+      sucess: true,
+      data: response,
+    });
+  } catch (error) {
+    console.log(error)
+    res.status(400).send({
+      message: "Error getting user data",
+    });
+  }
+});
+
 module.exports = router;
