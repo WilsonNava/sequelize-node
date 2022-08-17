@@ -1,8 +1,8 @@
 version: '3'
 services:
-    mysql:
+    mysqlJwt:
         image: mysql
-        container_name: 'my-sql'
+        container_name: 'my-sql-jwt'
         ports:
             - 3306:3306
         environment:
