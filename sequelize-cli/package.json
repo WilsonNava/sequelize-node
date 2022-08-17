@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon app.js",
     "create-db": "sequelize db:create",
-    "drop-db": "sequelize db:drop"
+    "drop-db": "sequelize db:drop",
+    "migrate": "sequelize db:migrate"
   },
   "keywords": [],
   "author": "",
