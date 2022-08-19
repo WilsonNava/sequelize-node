@@ -18,9 +18,18 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       image: DataTypes.STRING,
+      createdAt: {
+        type: DataTypes.DATE,
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+      },
     },
     {
       sequelize,
+      timestamps: true,
       modelName: "Category",
     }
   );

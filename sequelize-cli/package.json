@@ -9,7 +9,12 @@
     "create-db": "sequelize db:create",
     "drop-db": "sequelize db:drop",
     "migrate": "sequelize db:migrate",
-    "migrate-undo-all": "sequelize db:migrate:undo:all"
+    "migrate-undo-all": "sequelize db:migrate:undo:all",
+    "seed-create": "sequelize seed:generate --name",
+    "seed": "sequelize db:seed --seed",
+    "seed-all": "sequelize db:seed:all",
+    "seed-undo": "sequelize db:seed:undo --seed",
+    "seed-undo-all": "sequelize db:seed:undo:all"
   },
   "keywords": [],
   "author": "",
