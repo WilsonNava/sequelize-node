@@ -8,7 +8,8 @@
     "dev": "nodemon app.js",
     "create-db": "sequelize db:create",
     "drop-db": "sequelize db:drop",
-    "migrate": "sequelize db:migrate"
+    "migrate": "sequelize db:migrate",
+    "migrate-undo-all": "sequelize db:migrate:undo:all"
   },
   "keywords": [],
   "author": "",
