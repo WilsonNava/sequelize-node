@@ -1,23 +1,22 @@
 "use strict";
+const { faker } = require('@faker-js/faker');
+
+const generateData = (number) => {
+  const data = [];
+
+  for (let i = 0; i < number; i++) {
+    data.push({
+      name: faker.commerce.productName(),
+      description: faker.commerce.productDescription(),
+      amount: faker.datatype.number(),
+    });
+  }
+  return data;
+};
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.bulkInsert(
-      "Product",
-      [
-        {
-          name: "tv",
-          description: "super tv",
-          amount: 1,
-        },
-        {
-          name: "PS5",
-          description: "Awesome games",
-          amount: 3,
-        },
-      ],
-      {}
-    );
+    await queryInterface.bulkInsert("Product", generateData(100), {});
   },
 
   async down(queryInterface, Sequelize) {
