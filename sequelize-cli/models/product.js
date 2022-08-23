@@ -18,17 +18,17 @@ module.exports = (sequelize, DataTypes) => {
       amount: DataTypes.INTEGER,
       createdAt: {
         type: DataTypes.DATE,
-        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+        defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
       },
       updatedAt: {
         type: DataTypes.DATE,
-        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+        defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
       },
     },
     {
       sequelize,
       timestamps: true,
-      modelName: "Product",
+      modelName: "Products",
     }
   );
   return Product;

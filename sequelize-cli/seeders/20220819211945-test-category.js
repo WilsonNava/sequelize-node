@@ -16,13 +16,13 @@ const generateData = (number) => {
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert(
-      "Category",
+      "Categories",
       generateData(100),
       {}
     );
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete("Category", null, {});
+    await queryInterface.bulkDelete("Categories", null, {});
   },
 };
