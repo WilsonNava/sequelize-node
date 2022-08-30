@@ -4,6 +4,8 @@ const bcrypt = require("bcrypt");
 const JWT = require("jsonwebtoken");
 const { Op } = require("sequelize");
 
+const { SECRET_KEY, jwtVerify } = require("../middlewares/jwtVerify");
+
 const router = express.Router();
 
 router.get("/student/:email", async (req, res) => {
@@ -64,6 +66,68 @@ router.post("/student", async (req, res) => {
       });
     }
   } catch (error) {}
+});
+
+router.post("/student/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    const student = await studentModel.findOne({
+      where: {
+        email,
+      },
+    });
+
+    if (!student) {
+      return res.status(404).send({
+        success: false,
+        message: "Student not found",
+      });
+    }
+    const isValidPassword = bcrypt.compare(password);
+
+    if (!isValidPassword) {
+      return res.status(301).send({
+        success: false,
+        message: "Password or email not valid",
+      });
+    }
+
+    const token = JWT.sign(
+      {
+        email,
+      },
+      SECRET_KEY,
+      {
+        expiresIn: 1000 , // 10 min
+      }
+    );
+
+    res.status(200).send({
+      success: true,
+      token,
+    });
+  } catch (error) {}
+});
+
+router.get("/profile", jwtVerify, async (req, res) => {
+  try {
+    const student = await studentModel.findOne({
+      where: {
+        email: req.tokenData.email,
+      },
+    });
+
+    res.status(200).send({
+      success: true,
+      data: student,
+    });
+  } catch (error) {
+    res.status(400).send({
+      success: false,
+      error,
+    });
+  }
 });
 
 module.exports = router;
