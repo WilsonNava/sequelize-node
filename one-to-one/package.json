@@ -1,0 +1,30 @@
+{
+  "name": "one-to-one",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "create-db": "sequelize db:create",
+    "drop-db": "sequelize db:drop",
+    "migrate": "sequelize db:migrate",
+    "migrate-undo-all": "sequelize db:migrate:undo:all",
+    "seed-create": "sequelize seed:generate --name",
+    "seed": "sequelize db:seed --seed",
+    "seed-all": "sequelize db:seed:all",
+    "seed-undo": "sequelize db:seed:undo --seed",
+    "seed-undo-all": "sequelize db:seed:undo:all"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.21.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19",
+    "sequelize-cli": "^6.4.1"
+  }
+}
